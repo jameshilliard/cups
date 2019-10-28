@@ -18,11 +18,15 @@ TARGETS	=	\
 		rastertoepson \
 		rastertohp \
 		rastertolabel \
-		rastertopwg
+		rastertopwg \
+		rastertostar \
+		rastertostarlm \
+		rastertostarm
 
 OBJS	=	commandtops.o gziptoany.o common.o pstops.o \
 		rastertoepson.o rastertohp.o rastertolabel.o \
-		rastertopwg.o
+		rastertopwg.o rastertostar.o rastertostarlm.o \
+		rastertostarm.o
 
 
 #
@@ -224,6 +228,36 @@ rastertopwg:	rastertopwg.o ../cups/$(LIBCUPS)
 rastertopwg-static:	rastertopwg.o ../cups/$(LIBCUPSSTATIC)
 	echo Linking $@...
 	$(LD_CC) $(ALL_LDFLAGS) -o $@ rastertopwg.o $(LINKCUPSSTATIC)
+	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
+
+
+#
+# rastertostar
+#
+
+rastertostar:	rastertostar.o ../cups/$(LIBCUPS)
+	echo Linking $@...
+	$(LD_CC) $(ALL_LDFLAGS) -o $@ rastertostar.o $(LINKCUPS)
+	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
+
+
+#
+# rastertostarlm
+#
+
+rastertostarlm:	rastertostarlm.o ../cups/$(LIBCUPS)
+	echo Linking $@...
+	$(LD_CC) $(ALL_LDFLAGS) -o $@ rastertostarlm.o $(LINKCUPS)
+	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
+
+
+#
+# rastertostarm
+#
+
+rastertostarm:	rastertostarm.o ../cups/$(LIBCUPS)
+	echo Linking $@...
+	$(LD_CC) $(ALL_LDFLAGS) -o $@ rastertostarm.o $(LINKCUPS)
 	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
 
 

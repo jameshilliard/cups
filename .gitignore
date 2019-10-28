@@ -77,6 +77,9 @@ filter/rastertoepson
 filter/rastertohp
 filter/rastertolabel
 filter/rastertopwg
+filter/rastertostar
+filter/rastertostarlm
+filter/rastertostarm
 locale/checkpo
 locale/po2strings
 locale/strings2po
